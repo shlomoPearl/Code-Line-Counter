@@ -21,7 +21,7 @@ Whether you need to remove a password from a PDF, count lines of code in your Gi
 ## 🚀 Getting Started
 
 1. **Clone this repo:**
-   `git clone https://github.com/your-username/My-Scriptss.git && cd My-Scripts`
+   `git clone https://github.com/your-username/My-Scripts.git && cd My-Scripts`
 2. **Navigate to the script you want to use:**
    `cd <example_dir>`
    Please read the readme file inside for further instructions.
