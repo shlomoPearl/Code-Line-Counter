@@ -54,20 +54,15 @@ for url in "${repos[@]}"; do
         
         # Find and count files by extension
         for ext in "${file_types[@]}"; do
-            # Find files with this extension
             files=$(find "$repo_name" -name "*.${ext}" -type f 2>/dev/null)
-            
             if [ -n "$files" ]; then
                 while IFS= read -r file; do
                     if [ -f "$file" ]; then
-                        lines=$(python ../count_lines.py $file)
-                        
-                        # Update counters
+                        lines=$(python ../count_lines.py $file $ext)
                         file_counts["$ext"]=$((${file_counts["$ext"]:-0} + 1))
                         line_counts["$ext"]=$((${line_counts["$ext"]:-0} + lines))
                         total_files=$((total_files + 1))
                         total_lines=$((total_lines + lines))
-                        
                         echo "  $ext: $(basename "$file") - $lines lines"
                     fi
                 done <<< "$files"
