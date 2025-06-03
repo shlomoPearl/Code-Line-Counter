@@ -30,7 +30,7 @@ py sh ps1 java c cpp dll js ts rb go rs php cs swift kt dart pl r sql asm clj ex
 ./git_count_line.sh <github_username>
 ```
 
-### Example
+## Example
 
 ```bash
 ./git_count_line.sh octocat
@@ -53,6 +53,6 @@ This will:
 
 ---
 
-## 👨‍💻 License
+## License
 
-MIT - Feel free to use and modify.
+This project is licensed under the [MIT License](LICENSE).
