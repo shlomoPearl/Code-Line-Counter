@@ -1,4 +1,5 @@
 # 📊 GitHub Code Line Counter
+![Lines of Code](https://img.shields.io/badge/Lines%20of%20Code-10351-blue)
 
 A simple Bash utility to **count the number of source code files and lines** in all **public, non-archived GitHub repositories** of a given user. It supports multiple file types and provides a breakdown by language.
 
