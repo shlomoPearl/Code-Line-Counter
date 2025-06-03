@@ -1,0 +1,9 @@
+function example() {
+    console.log("line 1");
+    /*
+    this is a comment
+    */
+    console.log("line 2 - this might be skipped");  // ← This line gets skipped!
+    console.log("line 3");
+    return true;
+}
