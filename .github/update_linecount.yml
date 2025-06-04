@@ -1,0 +1,36 @@
+name: Update Line Count Badge
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # every Sunday at midnight
+  workflow_dispatch:    # allows manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Git (needed for cloning)
+        run: sudo apt-get update && sudo apt-get install -y git
+
+      - name: Make badge folder
+        run: mkdir -p badge
+
+      - name: Run badge generator
+        run: python generate_badge_json.py
+
+      - name: Commit and Push Badge JSON
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add linecount.json
+          git commit -m "Update linecount badge" || echo "No changes to commit"
+          git push
+
