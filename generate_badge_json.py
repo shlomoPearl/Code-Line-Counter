@@ -10,7 +10,6 @@ total_line_line = next((line for line in lines if "TOTAL" in line), None)
 
 # Default fallback if not found
 total_count = "unknown"
-print(f"Total lines: {total_count} ")
 
 if total_line_line:
     try:
@@ -20,7 +19,7 @@ if total_line_line:
 
 badge = {
     "schemaVersion": 1,
-    "label": "Lines of Code",
+    "label": "My Lines of Code",
     "message": total_count,
     "color": "blue"
 }
