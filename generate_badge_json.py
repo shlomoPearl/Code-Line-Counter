@@ -6,11 +6,11 @@ result = subprocess.run(["bash", "./count_line.sh", "shlomoPearl"], capture_outp
 
 # Extract the total line count from the final line of output
 lines = result.stdout.splitlines()
-print(f"Total lines:\n {lines} ")
 total_line_line = next((line for line in lines if "TOTAL" in line), None)
 
 # Default fallback if not found
 total_count = "unknown"
+print(f"Total lines: {total_count} ")
 
 if total_line_line:
     try:
