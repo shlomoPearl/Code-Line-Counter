@@ -2,8 +2,11 @@ name: Update Line Count Badge
 
 on:
   schedule:
-          - cron: "0 8 * * 3"  # every Wednesday 11:00AM IL Time.
+          - cron: "30 9 * * 3"  # every Wednesday 11:00AM IL Time.
   workflow_dispatch:    # allows manual trigger
+
+permissions:
+  contents: write  
 
 jobs:
   build:
