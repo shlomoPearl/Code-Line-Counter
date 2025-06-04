@@ -3,16 +3,22 @@
 # GitHub Repository Code Line Counter
 # Usage: ./git_count_line.sh YOUR_USERNAME
 
-declare -a file_types=(py sh ps1 java c cpp h hpp dll js ts rb go rs php cs swift kt dart pl r sql asm clj ex sqlite db) 
-echo "Working on file type: ${file_types[@]}"
-echo -e "If you're using a file type that's not listed,\nplease add it to the file_types array at the top of the script before proceeding.\n"
-
 USERNAME=${1:-"YOUR_USERNAME_HERE"}
 if [ "$USERNAME" = "YOUR_USERNAME_HERE" ]; then
     echo "Usage: $0 <github_username>"
     echo "Example: $0 octocat"
     exit 1
 fi
+
+declare -a file_types=(py sh ps1 java c cpp h hpp dll js ts rb go rs php cs swift kt dart pl r sql asm clj ex sqlite db) 
+echo "Working on file type: ${file_types[@]}"
+echo -e "If you're using a file type that's not listed,\nplease add it to the file_types array at the top of the script before proceeding.\n"
+# Files to exclude from line counting
+declare -a exclude_files=(doctest.h TestRunner.cpp)
+echo "Exclude those files: ${exclude_files[@]}"
+echo -e "Please edit it to your own needed \n\n"
+echo -e "Start with 5 seconds... if you want to update the file_types or the exclude_files lists - Do it now :) \n\n"
+sleep 5
 
 # Create a directory for cloned repos
 CLONE_DIR="github_repos_$USERNAME"
@@ -57,13 +63,16 @@ for url in "${repos[@]}"; do
             files=$(find "$repo_name" -name "*.${ext}" -type f 2>/dev/null)
             if [ -n "$files" ]; then
                 while IFS= read -r file; do
-                    if [ -f "$file" ]; then
-                        lines=$(python ../count_lines.py $file $ext)
-                        file_counts["$ext"]=$((${file_counts["$ext"]:-0} + 1))
-                        line_counts["$ext"]=$((${line_counts["$ext"]:-0} + lines))
-                        total_files=$((total_files + 1))
-                        total_lines=$((total_lines + lines))
-                        echo "  $ext: $(basename "$file") - $lines lines"
+                    filename=$(basename "$file")
+					if [[ ! " ${exclude_files[@]} " =~ " ${filename} " ]]; then
+						if [ -f "$file" ]; then
+							lines=$(python ../count_lines.py $file $ext)
+							file_counts["$ext"]=$((${file_counts["$ext"]:-0} + 1))
+							line_counts["$ext"]=$((${line_counts["$ext"]:-0} + lines))
+							total_files=$((total_files + 1))
+							total_lines=$((total_lines + lines))
+							echo "  $ext: $(basename "$file") - $lines lines"
+						fi
                     fi
                 done <<< "$files"
             fi
