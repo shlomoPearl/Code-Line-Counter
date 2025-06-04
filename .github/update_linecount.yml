@@ -2,7 +2,7 @@ name: Update Line Count Badge
 
 on:
   schedule:
-    - cron: "30 10 * * 3"  # every Sunday at midnight
+          - cron: "30 7 * * 3"  # every Sunday at midnight
   workflow_dispatch:    # allows manual trigger
 
 jobs:
