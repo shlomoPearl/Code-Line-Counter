@@ -6,10 +6,12 @@ result = subprocess.run(["bash", "./git_count_line.sh", "shlomoPearl"], capture_
 
 # Extract the total line count from the final line of output
 lines = result.stdout.splitlines()
+print(f"Total lines:\n {lines} ")
 total_line_line = next((line for line in lines if "TOTAL" in line), None)
 
 # Default fallback if not found
 total_count = "unknown"
+
 if total_line_line:
     try:
         total_count = total_line_line.split()[-1]  # last value should be the line count
