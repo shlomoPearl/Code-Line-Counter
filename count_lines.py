@@ -12,7 +12,7 @@ if __name__ == "__main__":
         line = file.readline()
         while line: 
             line = line.strip().strip('\n')
-            if line == '' or (line[0] == '#' type_f not in include_files) or (line[0] in comments or line[0:2] in comments):
+            if line == '' or (line[0] == '#' and type_f not in include_files) or (line[0] in comments or line[0:2] in comments):
                 line = file.readline()
                 continue
             if line[0:2] in open_block:
