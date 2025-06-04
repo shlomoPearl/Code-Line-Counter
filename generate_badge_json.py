@@ -2,7 +2,7 @@ import json
 import subprocess
 
 # Run your existing bash script to get total line count
-result = subprocess.run(["bash", "./git_count_line.sh", "shlomoPearl"], capture_output=True, text=True)
+result = subprocess.run(["bash", "./count_line.sh", "shlomoPearl"], capture_output=True, text=True)
 
 # Extract the total line count from the final line of output
 lines = result.stdout.splitlines()
