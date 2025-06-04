@@ -3,7 +3,7 @@
 # GitHub Repository Code Line Counter
 # Usage: ./git_count_line.sh YOUR_USERNAME
 
-declare -a file_types=(py sh ps1 java c cpp dll js ts rb go rs php cs swift kt dart pl r sql asm clj ex sqlite db) 
+declare -a file_types=(py sh ps1 java c cpp h hpp dll js ts rb go rs php cs swift kt dart pl r sql asm clj ex sqlite db) 
 echo "Working on file type: ${file_types[@]}"
 echo -e "If you're using a file type that's not listed,\nplease add it to the file_types array at the top of the script before proceeding.\n"
 
