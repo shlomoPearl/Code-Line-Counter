@@ -26,7 +26,11 @@ py sh ps1 java c cpp dll js ts rb go rs php cs swift kt dart pl r sql asm clj ex
 ---
 
 ## 🚀 Usage
-
+clone this repo with:
+```bash
+git clone https://github.com/shlomoPearl/Code-Line-Counter.git && cd Code-Line-Counter
+```
+and then:
 ```bash
 ./git_count_line.sh <github_username>
 ```
